@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+    <style>
+            body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .quiz-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .question {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .answers button {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .answers button:hover {
+        background-color: #0056b3;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz Question</h1>
+        <p class="question">What is the capital of France?</p>
+        <div class="answers">
+            <button onclick="checkAnswer(this, false)">A) Madrid</button>
+            <button onclick="checkAnswer(this, false)">B) Berlin</button>
+            <button onclick="checkAnswer(this, true)">C) Paris</button>
+            <button onclick="checkAnswer(this, false)">D) Rome</button>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+            function checkAnswer(button, isCorrect) {
+        const resultElement = document.getElementById('result');
+
+        if (isCorrect) {
+            resultElement.textContent = "Correct!";
+            resultElement.style.color = "green";
+        } else {
+            resultElement.textContent = "Incorrect!";
+            resultElement.style.color = "red";
+        }
+
+        // Disable all buttons after an answer is selected
+        const buttons = document.querySelectorAll('.answers button');
+        buttons.forEach(btn => btn.disabled = true);
+    }
+
+    </script>
+</body>
+</html>
